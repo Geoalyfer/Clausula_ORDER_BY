@@ -1,0 +1,39 @@
+Como ordenar os resultados das querys com o ORDER BY.
+
+Após incluir a função ORDER BY, defina qual coluna será ordenada.
+
+SELECT *
+	FROM venda
+ORDER BY dt_venda
+
+A ordenação de dt_venda será da menor para a maior data.
+
+
+---------------------------------------------------------------
+
+Para inverter a ordenação do maior para o menor, utilise a palavra DESC
+
+SELECT *
+	FROM venda
+ORDER BY dt_venda DESC
+
+-----------------------------------------------------------------
+Ordenar por 2 colunas. Primeiro por dt_venda e depois codigo_loja
+  
+SELECT *
+	FROM venda
+ORDER BY dt_venda, codigo_loja
+
+----------------------------------------------------------------
+Combinando duas agregações GROUP BY e ORDER BY nesta ordem. Não pode ser invertido para evitar erros. ORDER BY deve ser escrito sempre no final do código.
+
+  SELECT	codigo_loja,
+		matricula_vendedor,
+				SUM(valor_unitario) AS total_valor_unitario
+	FROM venda
+GROUP BY	codigo_loja,
+			matricula_vendedor
+ORDER BY codigo_loja,
+			matricula_vendedor
+
+  
